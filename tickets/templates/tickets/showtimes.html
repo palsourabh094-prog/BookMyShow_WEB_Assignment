@@ -1,0 +1,27 @@
+{% extends "tickets/base.html" %}
+{% block title %}Showtimes for {{ listing.title }} · BookMyShow Clone{% endblock %}
+{% block content %}
+<header class="page-band"><div class="container">
+  <a class="breadcrumb" href="{% url 'tickets:detail' listing.slug %}">{{ listing.title }}</a>
+  <h1>Showtimes</h1><p>{{ listing.title }} · {{ listing.language }} · {{ listing.format }}</p>
+</div></header>
+<section class="container content-section">
+  <nav class="date-list" aria-label="Show dates">
+    {% for option in days %}
+      <a href="{% url 'tickets:showtimes' listing.slug %}?date={{ option|date:'Y-m-d' }}{% if cinema %}&amp;cinema={{ cinema|urlencode }}{% endif %}"{% if option == day %} aria-current="date"{% endif %}>
+        <span>{{ option|date:"D" }}</span><strong>{{ option|date:"d" }}</strong><span>{{ option|date:"M" }}</span>
+      </a>
+    {% endfor %}
+  </nav>
+  <h2>{{ day|date:"l, j F" }}</h2>
+  {% for venue, shows in groups.items %}
+  <article class="panel showtime-row">
+    <div><h3>{{ venue.name }}</h3><p>{{ venue.address }}</p></div>
+    <div class="showtimes">
+      {% for show in shows %}<a class="button button-outline button-small" href="{% url 'tickets:seats' show.pk day|date:'Y-m-d' %}">{{ show.time|time:"g:i A" }} · ₹{{ listing.price }}</a>{% endfor %}
+    </div>
+  </article>
+  {% empty %}<p class="empty-state">No upcoming times for this date and location. Try another date or choose Delhi-NCR in the region selector.</p>{% endfor %}
+  {% if cinema %}<a class="text-link" href="{% url 'tickets:showtimes' listing.slug %}?date={{ day|date:'Y-m-d' }}">See more venues</a>{% endif %}
+</section>
+{% endblock %}
