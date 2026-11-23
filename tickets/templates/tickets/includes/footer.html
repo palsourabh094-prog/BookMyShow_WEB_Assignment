@@ -1,0 +1,56 @@
+<footer class="site-footer">
+  <div class="container">
+    <section class="footer-organizers" aria-labelledby="organizer-title">
+      <div>
+        <h2 id="organizer-title">Bring your show to the city</h2>
+        <p>Organizing a concert, a play or an experience in Delhi-NCR?</p>
+      </div>
+      <a class="button button-light" href="{% url 'tickets:list_show' %}">List your show</a>
+    </section>
+
+    <nav class="footer-actions" aria-label="Booking and support">
+      <a href="{% url 'tickets:help' %}"><strong>Help centre</strong><span>Booking questions and contact</span></a>
+      <a href="{% url 'tickets:bookings' %}"><strong>Booking confirmation</strong><span>Open or download your receipt</span></a>
+      <a href="{% url 'tickets:newsletter' %}"><strong>Newsletter</strong><span>Join the demo mailing list</span></a>
+    </nav>
+
+    <nav class="footer-directory" aria-label="Footer navigation">
+      <div>
+        <h3>Explore {{ region_label }}</h3>
+        {% for value, label in nav_categories %}
+          <a href="{% url 'tickets:catalog' value %}">{{ label }}</a>
+        {% endfor %}
+        <a href="{% url 'tickets:cinemas' %}">Cinemas</a>
+      </div>
+      <div>
+        <h3>Movie picks</h3>
+        {% url 'tickets:catalog' 'movies' as movie_url %}
+        <a href="{{ movie_url }}?genre=Drama">Drama</a>
+        <a href="{{ movie_url }}?genre=Comedy">Comedy</a>
+        <a href="{{ movie_url }}?genre=Thriller">Thrillers</a>
+        <a href="{{ movie_url }}?language=Hindi">Films in Hindi</a>
+        <a href="{{ movie_url }}?language=English">Films in English</a>
+      </div>
+      <div>
+        <h3>Tickets and partnerships</h3>
+        <a href="{% url 'tickets:offers' %}">Offers</a>
+        <a href="{% url 'tickets:giftcards' %}">Gift cards</a>
+        <a href="{% url 'tickets:corporates' %}">Corporate bookings</a>
+        <a href="{% url 'tickets:list_show' %}">For organizers</a>
+      </div>
+      <div>
+        <h3>Project and support</h3>
+        <a href="{% url 'tickets:about' %}">About this project</a>
+        <a href="{% url 'tickets:help' %}#questions">FAQs</a>
+        <a href="{% url 'tickets:help' %}#contact">Contact</a>
+        <a href="{% url 'tickets:about' %}#privacy">Demo privacy</a>
+        <a href="{% url 'tickets:about' %}#terms">Demo terms</a>
+      </div>
+    </nav>
+
+    <div class="footer-end">
+      {% include 'tickets/includes/brand.html' %}
+      <p>Independent student project. All listings and payments are simulated.</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,12 @@
+{% load static %}
+<article class="listing-card">
+  <a class="listing-link" href="{% url 'tickets:detail' listing.slug %}">
+    <div class="poster">
+      <img src="{% static listing.image %}" alt="" width="480" height="600" {% if lazy %}loading="lazy"{% endif %}>
+      <span class="poster-tag">{{ listing.format }}</span>
+    </div>
+    <h3>{{ listing.title }}</h3>
+  </a>
+  <p>{{ listing.genre }} <span aria-hidden="true">·</span> {{ listing.language }}</p>
+  {% if show_price %}<p class="card-price">From ₹{{ listing.price }}</p>{% endif %}
+</article>
