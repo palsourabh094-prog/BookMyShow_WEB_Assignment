@@ -1,0 +1,13 @@
+{% extends "tickets/base.html" %}
+{% block title %}About · BookMyShow Clone{% endblock %}
+{% block content %}
+<header class="page-band"><div class="container"><a class="breadcrumb" href="{% url 'tickets:home' %}">Home</a><h1>About BookMyShow Clone</h1><p>A Django student project about finding things to do in Delhi-NCR.</p></div></header>
+<section class="container content-section detail-info">
+  <div>
+    <h2>Discover and book</h2><p>Explore fictional films and live experiences, choose your seats and try a demo checkout. You can also rent an original short, create a gift card or submit an event inquiry.</p>
+    <h2 id="privacy">Demo privacy</h2><p>The local database stores account details, bookings, gift cards, newsletter sign-ups and inquiries. Passwords are hashed. Use sample contact details for the demonstration.</p>
+    <h2 id="terms">Demo terms</h2><p>This independent student project uses fictional listings and simulated payments. Receipts and gift cards work within the demo. Reservations have no admission value at a cinema or venue.</p>
+  </div>
+  <aside class="panel"><h2>Need help?</h2><p>Find answers to common questions about demo bookings and rentals.</p><a href="{% url 'tickets:help' %}" class="text-link">Visit the help centre</a></aside>
+</section>
+{% endblock %}

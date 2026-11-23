@@ -1,0 +1,17 @@
+{% extends "tickets/base.html" %}
+{% block title %}Gift cards · BookMyShow Clone{% endblock %}
+{% block content %}
+<header class="page-band"><div class="container"><a class="breadcrumb" href="{% url 'tickets:home' %}">Home</a><h1>Gift cards</h1><p>Give someone a night out of their choosing.</p></div></header>
+<section class="container content-section two-column">
+  <div class="gift-visual"><span>BookMyShow Clone</span><p>A night out<br>is on you.</p></div>
+  <div class="panel form-panel">
+    <h2>Create a demo gift card</h2>
+    <p>Copy the gift code from your account and share it. The recipient can redeem it at checkout.</p>
+    {% if user.is_authenticated %}
+    <form method="post">{% csrf_token %}{% include 'tickets/includes/form.html' %}<button class="button" type="submit">Create gift card</button></form>
+    {% else %}
+    <a class="button" href="{% url 'tickets:login' %}?next={% url 'tickets:giftcards' %}">Log in to create a gift card</a>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "tickets/base.html" %}
+{% block title %}Newsletter · BookMyShow Clone{% endblock %}
+{% block content %}
+<header class="page-band"><div class="container">
+  <a class="breadcrumb" href="{% url 'tickets:home' %}">Home</a>
+  <h1>Newsletter</h1>
+  <p>Join the mailing list for this student demo.</p>
+</div></header>
+<section class="container content-section">
+  <div class="panel form-panel newsletter-panel">
+    <h2>Register your email</h2>
+    <p>Use a sample email. Sign-ups are saved in the project database and no email is sent.</p>
+    <form method="post">
+      {% csrf_token %}{% include 'tickets/includes/form.html' %}
+      <button class="button" type="submit">Subscribe</button>
+    </form>
+    <a class="breadcrumb" href="{% url 'tickets:about' %}#privacy">View demo privacy details</a>
+  </div>
+</section>
+{% endblock %}
