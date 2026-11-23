@@ -1,0 +1,27 @@
+{% extends "tickets/base.html" %}
+{% block title %}Checkout · BookMyShow Clone{% endblock %}
+{% block content %}
+<header class="page-band"><div class="container"><h1>Checkout</h1><p>Review your order before confirming.</p></div></header>
+<section class="container content-section two-column">
+  <div class="panel">
+    <h2>Order summary</h2>
+    <h3>{{ listing.title }}</h3>
+    {% if show %}
+      <p>{{ show.venue.name }} · {{ day|date:"D, j M Y" }}, {{ show.time|time:"g:i A" }}</p>
+      <p>Seats {{ labels|join:", " }}</p>
+      <a class="text-link" href="{% url 'tickets:seats' show.pk day|date:'Y-m-d' %}">Change seats</a>
+    {% else %}
+      <p>48-hour streaming rental</p><a class="text-link" href="{% url 'tickets:detail' listing.slug %}">Back to title</a>
+    {% endif %}
+    <p class="subtotal"><strong>Subtotal</strong><strong>₹{{ subtotal }}</strong></p>
+  </div>
+  <form method="post" class="panel form-panel">
+    {% csrf_token %}
+    <input type="hidden" name="draft_id" value="{{ draft_id }}">
+    <h2>Demo payment</h2>
+    <p>Offer codes and gift credit are applied when you confirm. This demo uses no real payment details.</p>
+    {% include 'tickets/includes/form.html' %}
+    <button class="button" type="submit">Confirm demo order</button>
+  </form>
+</section>
+{% endblock %}

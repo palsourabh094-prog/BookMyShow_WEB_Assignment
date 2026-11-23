@@ -1,0 +1,27 @@
+{% extends "tickets/base.html" %}
+{% block title %}Select seats · BookMyShow Clone{% endblock %}
+{% block content %}
+<header class="page-band"><div class="container">
+  <a class="breadcrumb" href="{% url 'tickets:showtimes' show.listing.slug %}?date={{ day|date:'Y-m-d' }}">Back to showtimes</a>
+  <h1>Choose your seats</h1><p>{{ show.listing.title }} · {{ show.venue.name }} · {{ day|date:"D, j M" }}, {{ show.time|time:"g:i A" }}</p>
+</div></header>
+<section class="container content-section">
+  <form method="post" class="panel seat-panel" data-seat-form data-seat-price="{{ show.listing.price }}">
+    {% csrf_token %}
+    {{ form.seats.errors }}
+    <div class="screen-indicator">Front of venue</div>
+    <fieldset class="seat-field">
+      <legend>Select up to six seats</legend>
+      {% for row in seat_rows %}
+      <div class="seat-row">
+        {% for label in row %}
+          <label class="seat"><input type="checkbox" name="seats" value="{{ label }}"{% if label in occupied %} disabled{% elif label in selected %} checked{% endif %}><span>{{ label }}</span></label>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </fieldset>
+    <div class="seat-legend"><span>Available</span><span>Selected</span><span>Reserved</span></div>
+    <div class="seat-actions"><p>₹{{ show.listing.price }} per ticket <output data-seat-total aria-live="polite"></output></p><button class="button" type="submit">Continue to checkout</button></div>
+  </form>
+</section>
+{% endblock %}

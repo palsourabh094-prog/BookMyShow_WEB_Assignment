@@ -1,0 +1,28 @@
+{% extends "tickets/base.html" %}
+{% block title %}Booking confirmed · BookMyShow Clone{% endblock %}
+{% block content %}
+<section class="container content-section">
+  <div class="panel receipt">
+    <p class="confirmation-label">Order confirmed</p>
+    <h1>{{ reservation.listing.title }}</h1>
+    <p>Reference <strong class="reference">{{ reservation.pk }}</strong></p>
+    {% if reservation.showtime %}
+    <p>{{ reservation.showtime.venue.name }} · {{ reservation.date|date:"D, j M Y" }}, {{ reservation.showtime.time|time:"g:i A" }}</p>
+    <p>Seats {% for seat in reservation.seats.all %}{{ seat.label }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+    {% elif rental_active %}
+      <p>Your rental is ready to watch for 48 hours from order confirmation.</p>
+    {% else %}
+      <p>This rental has expired.</p>
+    {% endif %}
+    {% if reservation.discount %}<p>Offer savings ₹{{ reservation.discount }}</p>{% endif %}
+    {% if reservation.gift_credit %}<p>Gift credit applied ₹{{ reservation.gift_credit }}</p>{% endif %}
+    <p class="subtotal"><strong>Demo total</strong><strong>₹{{ reservation.total }}</strong></p>
+    <div class="button-row">
+      {% if not reservation.showtime and rental_active %}<a class="button" href="{% url 'tickets:watch' reservation.pk %}">Watch now</a>{% endif %}
+      <a class="button button-outline" href="{% url 'tickets:bookings' %}">My bookings</a>
+      <a class="text-link" href="{% url 'tickets:download_receipt' reservation.pk %}">Download receipt</a>
+      <a class="text-link" href="{% url 'tickets:home' %}">Back to home</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
