@@ -1,0 +1,93 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}CineBook{% endblock %}</title>
+
+    <script src="{% static 'website/js/images.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="top-header">
+    <div class="header-inner">
+
+        <!-- TEXT-BASED BOOKMYSHOW LOGO -->
+        <a class="brand" aria-label="BookMyShow home" href="{% url 'home' %}">
+            book<span class="logo-my">my</span>show
+        </a>
+
+        <form class="search-form" action="{% url 'movies' %}" method="get">
+            <span>⌕</span>
+            <input type="search"
+                   name="search"
+                   placeholder="Search movies by title, genre or language" aria-label="Search movies">
+        </form>
+
+        <div class="header-actions">
+
+            <span class="city-label">Delhi-NCR⌄</span>
+
+            {% if user.is_authenticated %}
+                <span class="welcome-user">Hi, {{ user.username }}</span>
+                {% include 'website/includes/logout.html' with button_class='sign-in' %}
+            {% else %}
+                <a class="sign-in" href="{% url 'login' %}">Sign in</a>
+            {% endif %}
+
+        </div>
+    </div>
+</header>
+
+
+<!-- NAVIGATION -->
+<nav class="sub-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'movies' %}">Movies</a>
+            <a href="{% url 'home' %}#premieres">Streams</a>
+            <a href="{% url 'events' %}">Events</a>
+        </div>
+
+        <div class="nav-links right-links">
+            <a href="{% url 'about' %}">About</a>
+
+            {% if not user.is_authenticated %}
+                <a href="{% url 'signup' %}">Sign Up</a>
+            {% endif %}
+        </div>
+
+    </div>
+</nav>
+
+
+<!-- MESSAGES -->
+{% if messages %}
+<div class="messages" role="status">
+    {% for message in messages %}
+        <p class="message {{ message.tags }}">{{ message }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+
+
+<!-- MAIN CONTENT -->
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+
+{% include 'website/includes/footer.html' %}
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+
+
+{% extends 'website/base.html' %}
+{% block title %}Home | BookMyShow
+{% endblock %}
+{% block content %}
+
+<!-- 1. MAIN PROMOTIONAL BANNER -->
+<section class="home-banner-wrap">
+    <div class="home-banner">
+        <div class="banner-copy">
+            <span class="banner-kicker">CINEBOOK PRESENTS</span>
+            <h1>Big stories.<br>Unforgettable experiences.</h1>
+            <p>Book your next movie night, live show or premiere.</p>
+            <div class="banner-actions">
+                <a class="banner-button" href="{% url 'movies' %}">Explore Movies</a>
+                <a class="banner-link" href="{% url 'events' %}">Discover Events →</a>
+            </div>
+        </div>
+
+        <div class="banner-visual" aria-hidden="true">
+            <div class="banner-ticket ticket-one">
+                <span>NOW SHOWING</span>
+                <strong>THE<br>MAGIC<br>OF CINEMA</strong>
+            </div>
+            <div class="banner-ticket ticket-two">
+                <span>LIVE</span>
+                <strong>YOUR<br>NEXT<br>EXPERIENCE</strong>
+            </div>
+            <div class="banner-spark">✦</div>
+        </div>
+    </div>
+</section>
+
+
+<!-- 2. RECOMMENDED MOVIES -->
+<section class="section home-section">
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow pink">NOW SHOWING</p>
+            <h2>Recommended Movies</h2>
+        </div>
+        <a class="see-all" href="{% url 'movies' %}">See all ›</a>
+    </div>
+
+    <div class="card-grid movie-grid">
+        {% for movie in movies %}
+        <a class="movie-card" href="{% url 'movie_detail' movie.id %}">
+            <div class="poster">
+                {% include 'website/includes/catalog_image.html' with url=movie.poster_url title=movie.title fallback_class='poster-fallback' lazy=True %}
+                <span class="rating">★ {{ movie.rating }}/10</span>
+            </div>
+            <h3>{{ movie.title }}</h3>
+            <p>{{ movie.genre }} · {{ movie.language }}</p>
+        </a>
+        {% empty %}
+        <div class="empty-state">
+            No movies have been added yet. Add movies from Django Admin.
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+<!-- 3. STREAM BANNER -->
+<section class="stream-banner">
+    <div class="stream-logo">
+        <span class="mini-logo">book<span>my</span>show</span>
+        <strong>STREAM</strong>
+    </div>
+
+    <h2>Endless Entertainment Anytime, Anywhere!</h2>
+</section>
+
+
+<!-- 4. THE BEST OF LIVE EVENTS -->
+<section class="section home-section">
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow pink">EXPLORE EXPERIENCES</p>
+            <h2>The Best of Live Events</h2>
+        </div>
+        <a class="see-all" href="{% url 'events' %}">See all ›</a>
+    </div>
+
+    <div class="live-category-grid">
+
+        <a href="{% url 'events' %}?search=Comedy" class="live-category comedy">
+            <h3>COMEDY<br>SHOWS</h3>
+            <p>Stand-up & laughter</p>
+            <span>Explore Events →</span>
+        </a>
+
+        <a href="{% url 'events' %}?search=Amusement" class="live-category amusement">
+            <h3>AMUSEMENT<br>PARK</h3>
+            <p>Fun & adventure</p>
+            <span>Explore Events →</span>
+        </a>
+
+        <a href="{% url 'events' %}?search=Theatre" class="live-category theatre">
+            <h3>THEATRE<br>SHOWS</h3>
+            <p>Drama & performances</p>
+            <span>Explore Events →</span>
+        </a>
+
+        <a href="{% url 'events' %}?search=Music" class="live-category music">
+            <h3>MUSIC<br>SHOWS</h3>
+            <p>Concerts & festivals</p>
+            <span>Explore Events →</span>
+        </a>
+
+        <a href="{% url 'events' %}?search=Workshop" class="live-category workshops">
+            <h3>WORKSHOPS<br>& MORE</h3>
+            <p>Learn something new</p>
+            <span>Explore Events →</span>
+        </a>
+
+    </div>
+</section>
+
+
+<!-- 5. PREMIERES -->
+<section class="premiere-section" id="premieres">
+    <div class="premiere-inner">
+
+        <div class="premiere-intro">
+            <div class="premiere-play">▶</div>
+            <div>
+                <p class="premiere-overline">CINEBOOK STREAMS</p>
+                <h2>Premieres</h2>
+                <p>Brand-new stories and special releases.</p>
+            </div>
+        </div>
+
+        <div class="section-heading premiere-heading">
+            <div>
+                <p class="premiere-small">WATCH SOMETHING NEW</p>
+                <h2>Fresh on your screen</h2>
+            </div>
+            <a class="premiere-see-all" href="{% url 'movies' %}">
+                Explore all movies ›
+            </a>
+        </div>
+
+        <div class="premiere-grid">
+            {% for movie in premieres %}
+            <a class="premiere-card" href="{% url 'movie_detail' movie.id %}">
+                <div class="premiere-poster">
+                    {% include 'website/includes/catalog_image.html' with url=movie.poster_url title=movie.title fallback_class='poster-fallback' lazy=True %}
+                    <span class="premiere-tag">PREMIERE</span>
+                </div>
+                <h3>{{ movie.title }}</h3>
+                <p>{{ movie.language }}</p>
+            </a>
+            {% empty %}
+            <div class="empty-state">
+                Premiere titles will appear here when movies are added.
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+
+<!-- 6. YOUR MUSIC STUDIO -->
+<section class="section home-section music-studio-section">
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow pink">CONCERTS · FESTIVALS · LIVE MUSIC</p>
+            <h2>Your Music Studio</h2>
+        </div>
+        <a class="see-all" href="{% url 'events' %}?search=Music">
+            See all ›
+        </a>
+    </div>
+
+    <div class="card-grid music-event-grid">
+        {% for event in music_events %}
+        <a class="event-card" href="{% url 'event_detail' event.id %}">
+            <div class="event-image">
+                {% include 'website/includes/catalog_image.html' with url=event.image_url title=event.title fallback_class='event-fallback' lazy=True %}
+            </div>
+
+            <div class="event-info">
+                <h3>{{ event.title }}</h3>
+                <p>{{ event.category }} · {{ event.city }}</p>
+                <p>{{ event.event_date }} · From ₹{{ event.price }}</p>
+            </div>
+        </a>
+        {% empty %}
+        <div class="empty-state">
+            No music events found. Add music concerts and festivals from Django Admin.
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

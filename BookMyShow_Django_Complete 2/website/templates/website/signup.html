@@ -1,0 +1,18 @@
+{% extends 'website/base.html' %}
+{% block title %}Sign Up | BookMyShow
+{% endblock %}
+{% block content %}
+<section class="auth-wrap">
+    <div class="auth-card">
+        <p class="eyebrow pink">JOIN CINEBOOK</p>
+        <h1>Create account</h1>
+        <p class="auth-subtitle">Sign up to explore movies and events.</p>
+        <form method="post">
+            {% include 'website/includes/auth_fields.html' %}
+            <button class="primary-button full-button" type="submit">Create account</button>
+        </form><p class="auth-switch">Already have an account? <a href="{% url 'login' %}">Sign in</a>
+        </p>
+        <p class="auth-switch"><a href="{% url 'home' %}">Back to Home</a></p>
+    </div>
+</section>
+{% endblock %}

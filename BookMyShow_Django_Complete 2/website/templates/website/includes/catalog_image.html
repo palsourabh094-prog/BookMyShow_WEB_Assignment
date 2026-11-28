@@ -1,0 +1,4 @@
+{% if url %}
+    <img class="catalog-image" src="{{ url }}" alt=""{% if lazy %} loading="lazy"{% endif %}>
+{% endif %}
+<div class="{{ fallback_class }}" aria-hidden="true"{% if url %} hidden{% endif %}>{{ title }}</div>

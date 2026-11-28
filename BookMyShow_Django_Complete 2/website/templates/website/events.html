@@ -1,0 +1,33 @@
+{% extends 'website/base.html' %}
+{% block title %}Events | BookMyShow
+{% endblock %}
+{% block content %}
+<section class="page-banner">
+    <p class="eyebrow pink">MUSIC · COMEDY · EXPERIENCES</p>
+    <h1>Events</h1>
+    <p>Find concerts, comedy shows and experiences near you.</p>
+    <form class="inline-search" method="get">
+        <input type="search" name="search" value="{{ search }}" placeholder="Search events" aria-label="Filter events">
+        <button class="primary-button">Search</button>
+    </form>
+</section>
+<section class="section">
+    <div class="card-grid event-grid">
+        {% for event in events %}
+        <a class="event-card" href="{% url 'event_detail' event.id %}">
+        <div class="event-image">
+            {% include 'website/includes/catalog_image.html' with url=event.image_url title=event.title fallback_class='event-fallback' lazy=True %}
+        </div>
+        <div class="event-info">
+            <h3>{{ event.title }}</h3>
+            <p>{{ event.category }} · {{ event.city }}</p>
+            <p>{{ event.venue }}</p>
+            <p>{{ event.event_date }} · From ₹{{ event.price }}</p>
+        </div>
+    </a>
+    {% empty %}
+    <div class="empty-state">No matching events found.</div>
+    {% endfor %}
+</div>
+</section>
+{% endblock %}

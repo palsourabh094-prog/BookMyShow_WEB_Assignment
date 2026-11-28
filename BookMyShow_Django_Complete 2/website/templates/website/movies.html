@@ -1,0 +1,27 @@
+{% extends 'website/base.html' %}
+{% block title %}Movies | BookMyShow
+{% endblock %}
+{% block content %}
+<section class="page-banner">
+    <p class="eyebrow pink">FIND YOUR NEXT FAVOURITE</p>
+    <h1>Movies</h1><p>Explore the latest and recommended movies.</p>
+    <form class="inline-search" method="get">
+        <input type="search" name="search" value="{{ search }}" placeholder="Search movies" aria-label="Filter movies">
+        <button class="primary-button">Search</button>
+    </form>
+</section>
+<section class="section">
+    <div class="card-grid movie-grid">
+        {% for movie in movies %}
+        <a class="movie-card" href="{% url 'movie_detail' movie.id %}">
+            <div class="poster">{% include 'website/includes/catalog_image.html' with url=movie.poster_url title=movie.title fallback_class='poster-fallback' lazy=True %}
+                <span class="rating">★ {{ movie.rating }}/10</span>
+            </div>
+            <h3>{{ movie.title }}</h3>
+            <p>{{ movie.genre }} · {{ movie.language }}</p>
+        </a>{% empty %}
+        <div class="empty-state">No matching movies found.</div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,1512 @@
+
+
+/* =========================================
+   1. GLOBAL STYLES
+========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f2f4f9;
+    color: #333;
+    line-height: 1.5;
+}
+
+main {
+    flex: 1;
+}
+
+.catalog-image[hidden],
+.poster-fallback[hidden],
+.event-fallback[hidden] {
+    display: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+
+/* =========================================
+   2. HEADER AND LOGO
+========================================= */
+
+.top-header {
+    background: #fff;
+    border-top: 4px solid #493238;
+}
+
+.header-inner,
+.nav-inner {
+    max-width: 1240px;
+    margin: auto;
+    min-height: 76px;
+    padding: 12px 22px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+/* Common logo styling */
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Arial Narrow", "Roboto Condensed", "Liberation Sans Narrow", Arial, sans-serif;
+    font-size: 23px;
+    font-weight: 400;
+    letter-spacing: -1.4px;
+    line-height: 1;
+    color: #252525;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Red tilted MY section */
+
+.logo-my {
+    display: inline-block;
+    background: #e34459;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    padding: 3px 4px 4px;
+    margin: 0 2px;
+    transform: rotate(-12deg);
+    line-height: 1;
+}
+
+.search-form {
+    height: 42px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    padding: 0 14px;
+    flex: 1;
+    color: #777;
+}
+
+.search-form span {
+    font-size: 25px;
+}
+
+.search-form input {
+    border: 0;
+    outline: 0;
+    width: 100%;
+    background: transparent;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    white-space: nowrap;
+}
+
+.city-label {
+    font-size: 14px;
+}
+
+.welcome-user {
+    font-size: 13px;
+}
+
+.sign-in,
+.primary-button {
+    display: inline-block;
+    background: #ed3454;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    padding: 9px 19px;
+    cursor: pointer;
+}
+
+.sign-in:hover,
+.primary-button:hover {
+    background: #d92949;
+}
+
+
+/* =========================================
+   3. NAVIGATION
+========================================= */
+
+.sub-nav {
+    background: #f5f5f5;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.nav-inner {
+    min-height: 45px;
+    justify-content: space-between;
+}
+
+.nav-links {
+    display: flex;
+    gap: 27px;
+    font-size: 14px;
+}
+
+.nav-links a:hover,
+.see-all:hover {
+    color: #ed3454;
+}
+
+.right-links {
+    font-size: 13px;
+}
+
+
+/* =========================================
+   4. MAIN HERO BANNER
+========================================= */
+
+.hero-wrap {
+    padding: 22px 20px 0;
+}
+
+.hero {
+    max-width: 1200px;
+    min-height: 340px;
+    margin: auto;
+    border-radius: 12px;
+    background: linear-gradient(
+        115deg,
+        #341323,
+        #792b43 58%,
+        #211c36
+    );
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 42px 8%;
+    overflow: hidden;
+}
+
+.hero-copy {
+    max-width: 570px;
+}
+
+.eyebrow {
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: #ffd47d;
+}
+
+.eyebrow.pink {
+    color: #ed3454;
+}
+
+.hero h1 {
+    font-size: clamp(34px, 5vw, 57px);
+    line-height: 1.08;
+    margin: 15px 0;
+}
+
+.hero p {
+    color: #f1dce2;
+    font-size: 17px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.outline-button {
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 5px;
+    padding: 8px 18px;
+}
+
+.hero-art {
+    position: relative;
+    width: 260px;
+    height: 220px;
+}
+
+.ticket {
+    position: absolute;
+    width: 145px;
+    height: 190px;
+    border-radius: 12px;
+    background: #f5c35a;
+    color: #39202b;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 900;
+    box-shadow: 0 15px 30px #0005;
+}
+
+.ticket-back {
+    transform: rotate(13deg);
+    right: 20px;
+    top: 10px;
+    background: #f2e7e8;
+}
+
+.ticket-front {
+    transform: rotate(-10deg);
+    left: 12px;
+    top: 25px;
+}
+
+.hero-star {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 50px;
+    color: #fff;
+}
+
+
+/* =========================================
+   5. COMMON SECTIONS
+========================================= */
+
+.section {
+    max-width: 1200px;
+    margin: 42px auto;
+    padding: 0 20px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 18px;
+}
+
+.section-heading h2 {
+    font-size: 27px;
+    line-height: 1.2;
+}
+
+.see-all {
+    color: #ed3454;
+    font-size: 14px;
+}
+
+.card-grid {
+    display: grid;
+    gap: 22px;
+}
+
+
+/* =========================================
+   6. MOVIE CARDS
+========================================= */
+
+.movie-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.movie-card {
+    min-width: 0;
+}
+
+.poster {
+    height: 330px;
+    position: relative;
+    border-radius: 9px;
+    overflow: hidden;
+    background: linear-gradient(145deg, #202d43, #7b354f);
+}
+
+.poster img,
+.event-image img,
+.detail-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.poster-fallback,
+.event-fallback {
+    height: 100%;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    color: #fff;
+    font-weight: 800;
+    font-size: 24px;
+    padding: 20px;
+    background: linear-gradient(145deg, #202d43, #7b354f);
+}
+
+.rating {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #111;
+    color: #fff;
+    padding: 7px 10px;
+    font-size: 13px;
+}
+
+.movie-card h3,
+.event-info h3 {
+    font-size: 17px;
+    margin-top: 11px;
+}
+
+.movie-card p,
+.event-info p {
+    font-size: 13px;
+    color: #777;
+    margin-top: 4px;
+}
+
+
+/* =========================================
+   7. EVENT CARDS
+========================================= */
+
+.event-section {
+    padding-top: 12px;
+    padding-bottom: 35px;
+}
+
+.event-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.event-card {
+    background: #fff;
+    border-radius: 9px;
+    overflow: hidden;
+    box-shadow: 0 3px 14px #0000000a;
+}
+
+.event-image {
+    height: 190px;
+    background: linear-gradient(130deg, #24294b, #b23c5a);
+}
+
+.event-fallback {
+    font-size: 25px;
+    background: linear-gradient(130deg, #24294b, #b23c5a);
+}
+
+.event-info {
+    padding: 12px 14px 16px;
+}
+
+
+/* =========================================
+   8. PAGE BANNER AND SEARCH
+========================================= */
+
+.page-banner {
+    background: #fff;
+    padding: 48px max(22px, calc((100% - 1160px) / 2));
+}
+
+.page-banner h1 {
+    font-size: 38px;
+    margin: 5px 0;
+}
+
+.page-banner > p:not(.eyebrow) {
+    color: #666;
+    max-width: 700px;
+}
+
+.inline-search {
+    display: flex;
+    gap: 10px;
+    max-width: 550px;
+    margin-top: 22px;
+}
+
+.inline-search input,
+.auth-card input {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 11px 12px;
+    min-width: 0;
+}
+
+.inline-search input {
+    flex: 1;
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    color: #666;
+}
+
+
+/* =========================================
+   9. DETAIL PAGES
+========================================= */
+
+.detail-layout {
+    max-width: 1100px;
+    margin: 45px auto;
+    padding: 0 22px;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 38px;
+    align-items: center;
+}
+
+.detail-poster {
+    height: 420px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #283047;
+}
+
+.detail-copy h1 {
+    font-size: 38px;
+    margin: 8px 0 12px;
+}
+
+.detail-copy p {
+    margin: 10px 0;
+    color: #666;
+}
+
+.detail-rating {
+    font-weight: 700;
+    color: #ed3454 !important;
+    font-size: 20px;
+}
+
+.detail-copy .primary-button {
+    margin-top: 15px;
+}
+
+
+/* =========================================
+   10. LOGIN AND SIGNUP
+========================================= */
+
+.auth-wrap {
+    min-height: 590px;
+    display: grid;
+    place-items: center;
+    padding: 40px 18px;
+}
+
+.auth-card {
+    width: min(100%, 430px);
+    background: #fff;
+    padding: 34px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px #1c233010;
+}
+
+.auth-card h1 {
+    font-size: 30px;
+    margin: 5px 0;
+}
+
+.auth-subtitle {
+    color: #777;
+    margin-bottom: 22px;
+}
+
+.auth-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.auth-card label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.auth-card input {
+    width: 100%;
+}
+
+.form-feedback,
+.auth-card .errorlist {
+    color: #9e1b3b;
+    font-size: 14px;
+}
+
+.auth-card .errorlist {
+    margin-top: 5px;
+    padding-left: 20px;
+}
+
+.full-button {
+    margin-top: 13px;
+    width: 100%;
+}
+
+.auth-switch {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 20px;
+    color: #666;
+}
+
+.auth-switch a {
+    color: #ed3454;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   11. MESSAGES
+========================================= */
+
+.messages {
+    max-width: 1200px;
+    margin: 12px auto;
+    padding: 0 20px;
+}
+
+.message {
+    background: #fff;
+    padding: 10px 14px;
+    border-radius: 5px;
+    margin-bottom: 6px;
+}
+
+.message.error {
+    border-left: 4px solid #ed3454;
+}
+
+.message.success {
+    border-left: 4px solid #279b62;
+}
+
+
+/* =========================================
+   12. ABOUT PAGE
+========================================= */
+
+.about-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.about-cards article {
+    background: #fff;
+    border-radius: 9px;
+    padding: 25px;
+}
+
+.about-cards h2 {
+    margin-bottom: 8px;
+}
+
+.about-cards p {
+    color: #666;
+}
+
+
+/* =========================================
+   13. HOME PAGE PROMOTIONAL BANNER
+========================================= */
+
+.home-banner-wrap {
+    padding: 12px 20px 0;
+}
+
+.home-banner {
+    max-width: 1240px;
+    min-height: 300px;
+    margin: auto;
+    padding: 42px 7%;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    background:
+        radial-gradient(circle at 78% 35%, #8d4055 0, transparent 29%),
+        linear-gradient(110deg, #08090d 0%, #251421 55%, #5b2036 100%);
+}
+
+.banner-copy {
+    position: relative;
+    z-index: 2;
+    max-width: 560px;
+}
+
+.banner-kicker {
+    color: #ffb9c5;
+    letter-spacing: 3px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.banner-copy h1 {
+    font-size: clamp(34px, 4.5vw, 55px);
+    line-height: 1.08;
+    margin: 14px 0;
+}
+
+.banner-copy p {
+    color: #eadde1;
+    font-size: 16px;
+}
+
+.banner-actions {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-top: 25px;
+}
+
+.banner-button {
+    background: #ed3454;
+    color: #fff;
+    padding: 11px 20px;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.banner-link {
+    color: #fff;
+    font-size: 14px;
+}
+
+.banner-visual {
+    width: 330px;
+    height: 220px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.banner-ticket {
+    position: absolute;
+    width: 150px;
+    height: 190px;
+    border-radius: 12px;
+    padding: 18px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 18px 35px #0008;
+}
+
+.banner-ticket span {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+}
+
+.banner-ticket strong {
+    font-size: 23px;
+    line-height: 1.05;
+}
+
+.ticket-one {
+    background: linear-gradient(145deg, #f6c66c, #d85b50);
+    color: #28151b;
+    left: 20px;
+    top: 18px;
+    transform: rotate(-9deg);
+}
+
+.ticket-two {
+    background: linear-gradient(145deg, #f4e9e8, #b7a1b5);
+    color: #29202d;
+    right: 18px;
+    top: 5px;
+    transform: rotate(9deg);
+}
+
+.banner-spark {
+    position: absolute;
+    right: 0;
+    top: -5px;
+    font-size: 45px;
+    color: #fff;
+}
+
+.home-section {
+    margin-top: 38px;
+    margin-bottom: 48px;
+}
+
+
+/* =========================================
+   14. PREMIERES SECTION
+========================================= */
+
+.premiere-section {
+    background: #292d43;
+    color: #fff;
+    padding: 28px 20px 42px;
+    margin-top: 35px;
+}
+
+.premiere-inner {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.premiere-intro {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 25px;
+}
+
+.premiere-play {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #ed5269;
+    color: #fff;
+    font-size: 22px;
+    padding-left: 3px;
+}
+
+.premiere-overline {
+    letter-spacing: 3px;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.premiere-intro h2 {
+    font-size: 26px;
+    line-height: 1.2;
+}
+
+.premiere-intro p:last-child {
+    color: #d7d9e3;
+    font-size: 13px;
+}
+
+.premiere-heading {
+    align-items: end;
+    margin-bottom: 17px;
+}
+
+.premiere-heading h2 {
+    font-size: 23px;
+}
+
+.premiere-small {
+    color: #c7c9d5;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+}
+
+.premiere-see-all {
+    color: #ff8da0;
+    font-size: 13px;
+}
+
+.premiere-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.premiere-card {
+    min-width: 0;
+}
+
+.premiere-poster {
+    height: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    background: #171a28;
+}
+
+.premiere-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.premiere-tag {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: #ed5269;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.premiere-card h3 {
+    font-size: 16px;
+    margin-top: 10px;
+    color: #fff;
+}
+
+.premiere-card p {
+    color: #d0d1da;
+    font-size: 13px;
+    margin-top: 3px;
+}
+
+.event-home-section {
+    margin-top: 42px;
+}
+
+
+/* =========================================
+   15. STREAM BANNER
+========================================= */
+
+.stream-banner {
+    max-width: 1100px;
+    min-height: 110px;
+    margin: 25px auto 35px;
+    padding: 20px 35px;
+    border-radius: 8px;
+    background: linear-gradient(120deg, #171d35, #303953, #171d35);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+    color: white;
+}
+
+.stream-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.mini-logo {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.mini-logo span {
+    background: #e83e55;
+    color: white;
+}
+
+.stream-logo strong {
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
+.stream-banner h2 {
+    color: #ffcf45;
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+}
+
+
+/* =========================================
+   16. LIVE EVENT CATEGORY CARDS
+========================================= */
+
+.live-category-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-top: 18px;
+}
+
+.live-category {
+    min-height: 175px;
+    padding: 18px 12px;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.live-category:hover {
+    transform: translateY(-5px);
+}
+
+.live-category h3 {
+    font-size: 21px;
+    line-height: 1.15;
+    font-weight: 800;
+}
+
+.live-category p {
+    font-size: 13px;
+}
+
+.live-category span {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.comedy {
+    background: linear-gradient(135deg, #a52d91, #ed579e);
+}
+
+.amusement {
+    background: linear-gradient(135deg, #368fd0, #76c9e9);
+}
+
+.theatre {
+    background: linear-gradient(135deg, #1761a6, #36a3bd);
+}
+
+.music {
+    background: linear-gradient(135deg, #7651bb, #bd65bd);
+}
+
+.workshops {
+    background: linear-gradient(135deg, #e45c4c, #d58a70);
+}
+
+
+/* =========================================
+   17. YOUR MUSIC STUDIO
+========================================= */
+
+.music-studio-section {
+    padding-top: 35px;
+    padding-bottom: 45px;
+}
+
+.music-event-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.music-event-grid .event-card {
+    min-width: 0;
+}
+
+.music-event-grid .event-image {
+    height: 260px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.music-event-grid .event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* =========================================
+   18. FOOTER
+========================================= */
+
+.footer {
+    background: #292a2d;
+    color: #c4c5ca;
+    margin-top: 45px;
+}
+
+.footer-inner {
+    width: min(1240px, 100% - 48px);
+    margin-inline: auto;
+}
+
+.footer-shortcuts {
+    background: #37383c;
+    border-block: 1px solid #47484c;
+}
+
+.footer-shortcut-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.footer-shortcut-grid a {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    gap: 10px;
+    padding: 23px 8px;
+    color: #dedee2;
+    font-size: 13px;
+    text-align: center;
+}
+
+.footer-shortcut-grid a + a {
+    border-inline-start: 1px solid #47484c;
+}
+
+.footer-icon {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border: 1.5px solid currentColor;
+}
+
+.footer-icon-film,
+.footer-icon-calendar {
+    border-radius: 4px;
+}
+
+.footer-icon-film {
+    background:
+        repeating-linear-gradient(to bottom, currentColor 0 2px, transparent 2px 6px) left center,
+        repeating-linear-gradient(to bottom, currentColor 0 2px, transparent 2px 6px) right center;
+    background-size: 4px 20px;
+    background-repeat: no-repeat;
+}
+
+.footer-icon-film::after {
+    position: absolute;
+    top: 8px;
+    left: 11px;
+    border-block: 5px solid transparent;
+    border-left: 7px solid currentColor;
+    content: "";
+}
+
+.footer-icon-calendar::before {
+    position: absolute;
+    top: 7px;
+    inset-inline: 0;
+    border-top: 1px solid currentColor;
+    content: "";
+}
+
+.footer-icon-calendar::after {
+    position: absolute;
+    top: 14px;
+    left: 9px;
+    width: 8px;
+    height: 4px;
+    border-bottom: 1.5px solid currentColor;
+    border-left: 1.5px solid currentColor;
+    transform: rotate(-45deg);
+    content: "";
+}
+
+.footer-icon-info {
+    border-radius: 50%;
+    font: 19px/27px Georgia, serif;
+}
+
+.footer-directory {
+    display: grid;
+    gap: 26px;
+    padding-block: 35px;
+}
+
+.footer-section h2 {
+    margin-bottom: 6px;
+    color: #e4e4e8;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .045em;
+    text-transform: uppercase;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    list-style: none;
+    font-size: 13px;
+}
+
+.footer-links li {
+    position: relative;
+    margin-right: 12px;
+    padding-right: 12px;
+}
+
+.footer-links li:not(:last-child)::after {
+    position: absolute;
+    top: 9px;
+    right: 0;
+    height: 12px;
+    border-inline-end: 1px solid #68696f;
+    content: "";
+}
+
+.footer-links a,
+.footer-logout {
+    display: inline-block;
+    padding-block: 5px;
+}
+
+.footer-logout {
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+}
+
+.footer a:hover,
+.footer-logout:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.footer :is(a, button):focus-visible {
+    outline: 2px solid #e8b5bf;
+    outline-offset: 3px;
+}
+
+.footer-bottom {
+    padding: 0 24px 27px;
+    text-align: center;
+}
+
+.footer-logo-line {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.footer-logo-line::before,
+.footer-logo-line::after {
+    flex: 1;
+    border-top: 1px solid #515258;
+    content: "";
+}
+
+.footer-brand {
+    color: white;
+}
+
+.footer-bottom p {
+    margin-top: 17px;
+    font-size: 12px;
+}
+
+/* =========================================
+   19. TABLET RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 900px) {
+
+    .live-category-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .music-event-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .premiere-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .premiere-poster {
+        height: 270px;
+    }
+}
+
+
+/* =========================================
+   20. RESPONSIVE DESIGN - 850px
+========================================= */
+
+@media (max-width: 850px) {
+
+    .header-inner {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .search-form {
+        order: 3;
+        flex-basis: 100%;
+    }
+
+    .movie-grid,
+    .event-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .poster {
+        height: 300px;
+    }
+
+    .hero-art {
+        transform: scale(0.8);
+        margin-right: -25px;
+    }
+
+    .detail-layout {
+        grid-template-columns: 220px 1fr;
+    }
+
+    .detail-poster {
+        height: 330px;
+    }
+
+    .banner-visual {
+        transform: scale(0.8);
+        transform-origin: right center;
+        margin-left: -35px;
+    }
+}
+
+
+/* =========================================
+   21. MOBILE RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 600px) {
+
+    /* Header */
+
+    .header-inner {
+        min-height: auto;
+        padding: 12px;
+    }
+
+    .top-header .brand {
+        font-size: 20px;
+    }
+
+    .top-header .logo-my {
+        font-size: 19px;
+    }
+
+    .header-actions {
+        margin-left: auto;
+        gap: 10px;
+    }
+
+    .city-label {
+        font-size: 12px;
+    }
+
+    .welcome-user {
+        display: none;
+    }
+
+    /* Navigation */
+
+    .nav-inner {
+        padding: 10px 13px;
+        gap: 15px;
+    }
+
+    .nav-links {
+        gap: 17px;
+        font-size: 13px;
+    }
+
+    .nav-inner,
+    .nav-links {
+        flex-wrap: wrap;
+    }
+
+    .right-links {
+        gap: 10px 17px;
+    }
+
+    /* Hero */
+
+    .hero {
+        padding: 32px 24px;
+        min-height: 300px;
+    }
+
+    .hero-art {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    /* Sections */
+
+    .section {
+        margin: 30px auto;
+    }
+
+    .section-heading h2 {
+        font-size: 22px;
+    }
+
+    /* Cards */
+
+    .movie-grid,
+    .event-grid {
+        gap: 14px;
+    }
+
+    .poster {
+        height: 245px;
+    }
+
+    .event-image {
+        height: 140px;
+    }
+
+    .movie-card h3,
+    .event-info h3 {
+        font-size: 15px;
+    }
+
+    /* Page banner */
+
+    .page-banner {
+        padding: 35px 20px;
+    }
+
+    .page-banner h1 {
+        font-size: 32px;
+    }
+
+    .inline-search {
+        flex-wrap: wrap;
+    }
+
+    .inline-search input {
+        flex-basis: 100%;
+    }
+
+    /* Detail page */
+
+    .detail-layout {
+        display: block;
+        margin: 30px auto;
+    }
+
+    .detail-poster {
+        width: 220px;
+        height: 310px;
+        margin: 0 auto 25px;
+    }
+
+    .detail-copy h1 {
+        font-size: 30px;
+    }
+
+    /* About page */
+
+    .about-cards {
+        grid-template-columns: 1fr;
+    }
+
+    /* Home banner */
+
+    .home-banner {
+        min-height: 280px;
+        padding: 30px 24px;
+    }
+
+    .banner-visual {
+        display: none;
+    }
+
+    .banner-copy h1 {
+        font-size: 36px;
+    }
+
+    .banner-actions {
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    /* Stream banner */
+
+    .stream-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .stream-banner h2 {
+        font-size: 19px;
+    }
+
+    /* Premiere section */
+
+    .premiere-section {
+        padding: 25px 15px 32px;
+    }
+
+    .premiere-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .premiere-poster {
+        height: 235px;
+    }
+
+    .premiere-intro h2 {
+        font-size: 23px;
+    }
+
+    /* Live categories */
+
+    .live-category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Music studio */
+
+    .music-event-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .music-event-grid .event-image {
+        height: 220px;
+    }
+
+    /* Footer */
+
+    .footer-inner {
+        width: calc(100% - 32px);
+    }
+
+    .footer-shortcut-grid a {
+        font-size: 12px;
+    }
+
+    .footer-directory {
+        gap: 20px;
+        padding-block: 27px;
+    }
+}

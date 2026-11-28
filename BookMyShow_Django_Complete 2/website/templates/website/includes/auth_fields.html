@@ -1,0 +1,12 @@
+{% csrf_token %}
+{% if form.is_bound and form.errors %}
+    <p class="form-feedback" role="alert">Please check the details below and try again.</p>
+{% endif %}
+{{ form.non_field_errors }}
+{% for field in form %}
+    <div class="form-field">
+        {{ field.label_tag }}
+        {{ field }}
+        {{ field.errors }}
+    </div>
+{% endfor %}

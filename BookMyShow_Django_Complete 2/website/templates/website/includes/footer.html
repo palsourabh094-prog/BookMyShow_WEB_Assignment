@@ -1,0 +1,93 @@
+<footer class="footer" id="site-footer">
+    <nav class="footer-shortcuts" aria-label="Quick links">
+        <div class="footer-inner footer-shortcut-grid">
+            <a href="{% url 'movies' %}">
+                <span class="footer-icon footer-icon-film" aria-hidden="true"></span>
+                Browse movies
+            </a>
+            <a href="{% url 'events' %}">
+                <span class="footer-icon footer-icon-calendar" aria-hidden="true"></span>
+                Find live events
+            </a>
+            <a href="{% url 'about' %}">
+                <span class="footer-icon footer-icon-info" aria-hidden="true">i</span>
+                About the project
+            </a>
+        </div>
+    </nav>
+
+    <nav class="footer-inner footer-directory" aria-label="Explore BookMyShow">
+        <div class="footer-section">
+            <h2>Explore the catalog</h2>
+            <ul class="footer-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'movies' %}">All movies</a></li>
+                <li><a href="{% url 'home' %}#premieres">Premieres</a></li>
+                <li><a href="{% url 'events' %}">All events</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h2>Movies by genre</h2>
+            <ul class="footer-links">
+                <li><a href="{% url 'movies' %}?search=Drama">Drama</a></li>
+                <li><a href="{% url 'movies' %}?search=Action">Action</a></li>
+                <li><a href="{% url 'movies' %}?search=Adventure">Adventure</a></li>
+                <li><a href="{% url 'movies' %}?search=Thriller">Thriller</a></li>
+                <li><a href="{% url 'movies' %}?search=Family">Family</a></li>
+                <li><a href="{% url 'movies' %}?search=Romance">Romance</a></li>
+                <li><a href="{% url 'movies' %}?search=Sci-Fi">Sci-Fi</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h2>Movies by language</h2>
+            <ul class="footer-links">
+                <li><a href="{% url 'movies' %}?search=English">English</a></li>
+                <li><a href="{% url 'movies' %}?search=Hindi">Hindi</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h2>Live events by category</h2>
+            <ul class="footer-links">
+                <li><a href="{% url 'events' %}?search=Comedy">Comedy shows</a></li>
+                <li><a href="{% url 'events' %}?search=Theatre">Theatre</a></li>
+                <li><a href="{% url 'events' %}?search=Music">Music events</a></li>
+                <li><a href="{% url 'events' %}?search=Workshops">Workshops</a></li>
+                <li><a href="{% url 'events' %}?search=Amusement">Amusement parks</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h2>Events near you</h2>
+            <ul class="footer-links">
+                <li><a href="{% url 'events' %}?search=Delhi">Delhi</a></li>
+                <li><a href="{% url 'events' %}?search=Gurugram">Gurugram</a></li>
+                <li><a href="{% url 'events' %}?search=Noida">Noida</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h2>Account and project</h2>
+            <ul class="footer-links">
+                <li><a href="{% url 'about' %}">About us</a></li>
+                {% if user.is_authenticated %}
+                    <li>{% include 'website/includes/logout.html' with button_class='footer-logout' %}</li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Sign in</a></li>
+                    <li><a href="{% url 'signup' %}">Sign up</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <div class="footer-bottom">
+        <div class="footer-logo-line">
+            <a class="brand footer-brand" href="{% url 'home' %}" aria-label="BookMyShow home">
+                book<span class="logo-my">my</span>show
+            </a>
+        </div>
+        <p>BookMyShow Django student project</p>
+    </div>
+</footer>

@@ -1,0 +1,15 @@
+{% extends 'website/base.html' %}
+{% block title %}{{ event.title }} | BookMyShow{% endblock %}
+{% block content %}<section class="detail-layout">
+    <div class="detail-poster">{% include 'website/includes/catalog_image.html' with url=event.image_url title=event.title fallback_class='event-fallback' %}</div>
+        <div class="detail-copy">
+            <p class="eyebrow pink">EVENT DETAILS</p>
+            <h1>{{ event.title }}</h1>
+            <p>{{ event.category }} · {{ event.city }}</p>
+            <p>Venue: {{ event.venue }}</p>
+            <p>Date: {{ event.event_date }}</p>
+            <p class="detail-rating">Starting from ₹{{ event.price }}</p>
+            <p>{{ event.description }}</p>
+            <a class="primary-button" href="{% url 'events' %}">Back to Events</a>
+        </div>
+    </section>{% endblock %}
